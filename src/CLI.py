@@ -2,6 +2,7 @@ import sys
 import requests
 from tabulate import tabulate
 
+
 class CLI:
 
 
@@ -25,7 +26,9 @@ class CLI:
         url = "https://zccpranav.zendesk.com/api/v2/tickets.json?page[size]=25"
         # count_url = 'https://zccpranav.zendesk.com/api/v2/tickets/count'
         user = "pranavnaik0700@gmail.com"
-        pwd = "Zendesk@321"
+        f = open(r'C:\Users\naikp\PycharmProjects\Zendesk\src\password', 'r')
+        content = f.read()
+        pwd=content
         # Do the HTTP get request
         headersAPI = {
             "accept": "application/json",
@@ -34,7 +37,6 @@ class CLI:
         }
         # count_response = requests.get(count_url, params=headersAPI, auth=(user, pwd))
         # count_data = count_response.json()
-
         while url:
             # count=count_data['count']['value']
             response = requests.get(url, params=headersAPI, auth=(user, pwd))
@@ -78,7 +80,9 @@ class CLI:
         url = "https://zccpranav.zendesk.com/api/v2/tickets/" + str(ticket_number)
         count_url = "https://zccpranav.zendesk.com/api/v2/tickets/count"
         user = "pranavnaik0700@gmail.com"
-        pwd = "Zendesk@321"
+        f = open(r'C:\Users\naikp\PycharmProjects\Zendesk\src\password', 'r')
+        content = f.read()
+        pwd = content
         # Do the HTTP get request
         headersAPI = {
             "accept": "application/json",
@@ -151,5 +155,5 @@ class CLI:
                 print(invalid_input_error)
         sys.exit()
 
-#cli=CLI()
-#cli.start()
+cli=CLI()
+cli.start()

@@ -1,0 +1,9 @@
+url = "https://zccpranav.zendesk.com/api/v2/tickets/" + str(ticket_number)
+count_url = "https://zccpranav.zendesk.com/api/v2/tickets/count"
+user = "pranavnaik0700@gmail.com"
+# Do the HTTP get request
+headersAPI = {
+        "accept": "application/json",
+        "Authorization": "Bearer"
+        "25aa76d0368709d1af774bd4df74287e036f3634c9aa2d4a791ec5fda13dd8b0",
+    }
