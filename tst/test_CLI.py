@@ -39,11 +39,5 @@ class TestCLI(unittest.TestCase):
         #responses.add(responses.GET, url_count, json=view_by_count_response, status=200)
         response = self.cli.view_all_tickets()
         self.assertTrue(response, 200)
-
-
-    # def test_CLIInput(self):    #checks user input
-    #     #one happycase
-    #     #one invalid input from user
-    #
-    # def test_view_all_ticket(self):
-    #     #one happycase
+        
+        
