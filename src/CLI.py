@@ -22,9 +22,8 @@ class CLI:
 
 
     def view_all_tickets(self):
-        # count_shown_ticket = 0
         url = "https://zccpranav.zendesk.com/api/v2/tickets.json?page[size]=25"
-        # count_url = 'https://zccpranav.zendesk.com/api/v2/tickets/count'
+        count_url = 'https://zccpranav.zendesk.com/api/v2/tickets/count'
         user = "pranavnaik0700@gmail.com"
         f = open(r'C:\Users\naikp\PycharmProjects\Zendesk\src\password', 'r')
         content = f.read()
@@ -35,10 +34,10 @@ class CLI:
             "Authorization": "Bearer"
             "25aa76d0368709d1af774bd4df74287e036f3634c9aa2d4a791ec5fda13dd8b0",
         }
-        # count_response = requests.get(count_url, params=headersAPI, auth=(user, pwd))
-        # count_data = count_response.json()
+        count_response = requests.get(count_url, params=headersAPI, auth=(user, pwd))
+        count_data = count_response.json()
         while url:
-            # count=count_data['count']['value']
+            count=count_data['count']['value']
             response = requests.get(url, params=headersAPI, auth=(user, pwd))
             data = response.json()
             if response.status_code != 200:
@@ -57,14 +56,13 @@ class CLI:
                     ]
                 )
 
-            # print("There are total {} tickets, {} are shown below".format(count,temp.__len__()))
+            print("There are total {} tickets, {} are shown below".format(count,temp.__len__()))
             print(
                 tabulate(
                     temp, headers=["Ticket ID", "Created At", "Last updated At", "Subject"]
                 )
             )
-            # count_shown_ticket+=temp.__len__()
-
+            
             if data['meta']['has_more']:
                 url = data['links']['next']
                 print("press 'n' to view more tickets")
@@ -104,7 +102,7 @@ class CLI:
             return {'status' :response.status_code, 'exist' :ticket_exist,'result' : response}
             exit()
             # Decode the JSON response into a dictionary and use the data
-        # print(data)
+
         ticket_results = []
 
         ticket_results.append(
